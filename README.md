@@ -10,5 +10,5 @@ Send Guia Bolso CSV backups to Google Sheets.
 ## Building
 
 ```console
-grade jar
+gradle jar
 ```
