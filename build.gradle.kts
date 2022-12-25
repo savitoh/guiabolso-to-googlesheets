@@ -18,7 +18,9 @@ repositories {
 
 apply(plugin = "kotlin-kapt")
 dependencies {
-    testImplementation(kotlin("test"));
+    testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.4")
+    testImplementation("io.mockk:mockk:1.13.3")
+    testImplementation(kotlin("test"))
     implementation("info.picocli:picocli:4.7.0");
     kapt("info.picocli:picocli-codegen:4.7.0");
 }
