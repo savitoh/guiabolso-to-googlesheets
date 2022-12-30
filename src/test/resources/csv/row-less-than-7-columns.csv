@@ -1,0 +1,8 @@
+Banco,Conta,Data da transação,Transação,Valor da transação,Categoria,Comentário
+Caixa Econômica Federal,***4 / **2 / *****425-6,2018-12-09,REM BASICA,0.0,Juros,
+Caixa Econômica Federal,***4 / **2 / *****425-6,2018-10-08,CRED JUROS,16.06,Rendimento,
+Caixa Econômica Federal,***4 / **2 / *****425-6,2018-10-08,DP DIN LOT,520.0,Outras rendas,
+Banco Itaú Unibanco S.A.,Banco Itaú Unibanco S.A.,2018-10-08,SAQUE 24H 11586773 06/10,-450.0,Moradia,
+Banco Itaú Unibanco S.A.,2018-10-08,INT PAG TIT BANCO 422,-164.0,Pagamento de cartão,
+Banco Itaú Unibanco S.A.,Banco Itaú Unibanco S.A.,2018-11-30,REMUN/SALARIO,2125.51,Remuneração,
+Banco Itaú Unibanco S.A.,Banco Itaú Unibanco S.A.,2018-12-31,EST LANCAMENTO DE DEBITO,2500.0,Outras rendas

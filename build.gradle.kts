@@ -1,5 +1,4 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
 
 
 plugins {
@@ -21,8 +20,8 @@ dependencies {
     testImplementation("io.kotest:kotest-assertions-core-jvm:5.5.4")
     testImplementation("io.mockk:mockk:1.13.3")
     testImplementation(kotlin("test"))
-    implementation("info.picocli:picocli:4.7.0");
-    kapt("info.picocli:picocli-codegen:4.7.0");
+    implementation("info.picocli:picocli:4.7.0")
+    kapt("info.picocli:picocli-codegen:4.7.0")
 }
 
 val jar by tasks.getting(Jar::class) {
