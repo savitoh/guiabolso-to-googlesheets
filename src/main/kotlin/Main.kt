@@ -1,35 +1,40 @@
+import csv.CsvParser
 import picocli.CommandLine
 import picocli.CommandLine.Command
 import picocli.CommandLine.Parameters
 import java.io.File
-import java.math.BigInteger
-import java.nio.file.Files
-import java.security.MessageDigest
 import java.util.concurrent.Callable
 import kotlin.system.exitProcess
 
 
 @Command(
-    name = "checksum",
+    name = "guiabolso-to-googlesheets",
     mixinStandardHelpOptions = true,
-    version = ["Checksum CLI 0.1"],
-    description = ["Prints the checksum (MD5 by default) of a file to STDOUT."]
+    version = ["guiabolso-to-googlesheets CLI 0.1"],
+    description = ["Send Guiabolso CSVs backups to Google Sheets."]
 )
-class Checksum : Callable<Int> {
+class Main : Callable<Int> {
 
-    @Parameters(index = "0", description = ["The file whose checksum to calculate."], split = ",")
+    @Parameters(index = "0", description = ["Guiabolso CSVs whose send to Google Sheets."], split = ",")
     lateinit var files: List<File>
 
-    private var algorithm = "MD5"
-
     override fun call(): Int {
-        files.forEach {
-            val fileContents = Files.readAllBytes(it.toPath())
-            val digest = MessageDigest.getInstance(algorithm).digest(fileContents)
-            println(("%0" + digest.size * 2 + "x").format(BigInteger(1, digest)))
+        val csvParser = CsvParser()
+        files.map {
+            csvParser.parse(it)
+                .onSuccess { csvWrapper ->
+                    println(
+                        csvWrapper.joinToString(
+                            prefix = "**********************************CSV Wrappers********************************\n",
+                            separator = "\n",
+                            postfix = "\n*********************************END******************************************"
+                        )
+                    )
+                }
+                .onFailure { error -> println("Error: ${error.message} to parser File: ${it.name}") }
         }
         return 0
     }
 }
 
-fun main(args: Array<String>): Unit = exitProcess(CommandLine(Checksum()).execute(*args))
+fun main(args: Array<String>): Unit = exitProcess(CommandLine(Main()).execute(*args))
