@@ -1,5 +1,7 @@
 #!/bin/sh
 
+chmod +ux
+
 #
 # Copyright © 2015-2021 the original authors.
 #
