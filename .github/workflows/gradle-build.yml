@@ -3,7 +3,7 @@ name: Java CI
 on: [ push ]
 
 jobs:
-  build:
+  build-gradle-project:
     runs-on: ubuntu-latest
 
     steps:
@@ -13,9 +13,7 @@ jobs:
         with:
           java-version: '17'
           distribution: 'adopt'
-
       - name: Setup Gradle
-        user: gradle/gradle-build-action@v2
-
-      - name: Execute Gradle Build
+        uses: gradle/gradle-build-action@v2
+      - name: Run build with Gradle Wrapper
         run: ./gradlew build
