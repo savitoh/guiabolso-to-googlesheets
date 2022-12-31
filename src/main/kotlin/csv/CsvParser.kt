@@ -22,7 +22,7 @@ class CsvParser {
         val transactionDescription: String,
         val transactionValue: String,
         val category: String,
-        val comment: String
+        val comment: String = ""
     )
 
     fun parse(file: File): Result<List<CsvWrapper>> {
