@@ -102,6 +102,11 @@ class CsvParserTest {
         )
 
         @Test
+        fun `when csv has unexpectedHeader headers then return error`() = testCase(
+            path = "/csv/unexpected-headers.csv", messageExpected = "CSV doesn't have these headers: Transação, Comentário"
+        )
+
+        @Test
         fun `when csv has any rows with column size less than 7 then return error`() = testCase(
             path = "/csv/row-less-than-7-columns.csv",
             messageExpected = "Row: \"[Banco Itaú Unibanco S.A., 2018-10-08, INT PAG TIT BANCO 422, -164.0, Pagamento de cartão, ]\" doesn't have: 7 columns"
