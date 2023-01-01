@@ -21,6 +21,9 @@ dependencies {
     testImplementation("io.mockk:mockk:1.13.3")
     testImplementation(kotlin("test"))
     implementation("info.picocli:picocli:4.7.0")
+    implementation("com.google.api-client:google-api-client:2.1.1")
+    implementation("com.google.oauth-client:google-oauth-client-jetty:1.34.1")
+    implementation("com.google.apis:google-api-services-sheets:v4-rev20221216-2.0.0")
     kapt("info.picocli:picocli-codegen:4.7.0")
 }
 
@@ -36,6 +39,16 @@ val jar by tasks.getting(Jar::class) {
 
 tasks.test {
     useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        exceptionFormat = org.gradle.api.tasks.testing.logging.TestExceptionFormat.FULL
+        events(
+            org.gradle.api.tasks.testing.logging.TestLogEvent.STARTED,
+            org.gradle.api.tasks.testing.logging.TestLogEvent.PASSED,
+            org.gradle.api.tasks.testing.logging.TestLogEvent.SKIPPED,
+            org.gradle.api.tasks.testing.logging.TestLogEvent.FAILED
+        )
+    }
 }
 
 tasks.withType<KotlinCompile> {
